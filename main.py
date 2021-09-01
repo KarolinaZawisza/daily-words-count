@@ -39,6 +39,16 @@ def create_graph():
 
     requests.post(url=graph_endpoint, json=graph_params, headers=headers)
 
+def graph_post(date: str, quantity: str):
+    post_endpoint = f'{PIXELA_ENDPOINT}/{USERNAME}/graphs/{ID}'
+    post_params = {
+        'date': date,
+        'quantity': quantity,
+    }
+
+    response = requests.post(url=post_endpoint, json=post_params, headers=headers)
+    print(response.text)
+
 def graph_update(date, quantity):
     update_endpoint = f'{PIXELA_ENDPOINT}/{USERNAME}/graphs/{ID}/{date}'
     update_params = {
@@ -54,19 +64,7 @@ def graph_delete(date):
     response = requests.delete(url=delete_endpoint, headers=headers)
     print(response.text)
 
-def graph_post(date: str, quantity: str):
-    post_endpoint = f'{PIXELA_ENDPOINT}/{USERNAME}/graphs/{ID}'
-    post_params = {
-        'date': date,
-        'quantity': quantity,
-    }
-
-    response = requests.post(url=post_endpoint, json=post_params, headers=headers)
-    print(response.text)
-
 
 user_words = input('How much words have you read today? ')
 
-# graph_post('20210830', '34500')
 graph_update(today, user_words)
-# graph_delete(today)

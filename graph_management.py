@@ -25,7 +25,6 @@ def create_user():
 
     requests.post(url=PIXELA_ENDPOINT, json=user_params)
 
-
 def create_graph():
     graph_params = {
         'id': ID,
@@ -64,7 +63,6 @@ def graph_update(date: str, quantity: int):
 
 def graph_delete(date: str):
     delete_endpoint = f'{PIXELA_ENDPOINT}/{USERNAME}/graphs/{ID}/{date}'
-
     response = requests.delete(url=delete_endpoint, headers=headers)
     print(response.text)
 
